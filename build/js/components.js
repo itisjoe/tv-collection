@@ -56,6 +56,13 @@ Vue.component('tvitem', {
                 url = 'http://www.bilibili.com/video/av'+this.i.videoId+'/';
             }
             return url;
+        },
+        n : function() {
+            var now = new Date();
+            var item = new Date(this.i.publishtime);
+            var diff = now - item;
+            var n = diff < 259200000 ? true : false;
+            return n;
         }
     },
     template: '\
@@ -72,7 +79,7 @@ Vue.component('tvitem', {
             <div class="description">\
                 <a :href="url" target="_blank">{{i.description}}</a>\
             </div>\
-            <div class="publishtime">發佈時間：{{i.publishtime}}</div>\
+            <div class="publishtime">發佈時間：{{i.publishtime}}&nbsp;<span v-show="n" class="newstuff">new!</span></div>\
         </div>\
         <div class="clear"></div>\
     </article>\

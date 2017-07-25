@@ -180,6 +180,10 @@ header#mainheader h1 {
   font-size: 12px;
   color: #999;
 }
+#main section#showlist .itemsbox .items .item .info .publishtime .newstuff {
+  color: #aa0000;
+  font-weight: bold;
+}
 #main section#showlist .itemsbox .more {
   text-align: center;
   margin: 10px 0 30px 0;
