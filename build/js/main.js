@@ -20,7 +20,7 @@ var app = new Vue({
         if (store.enabled) {
             //store.clear();
             var data = store.get('data');
-            if (data !== undefined && data !== []) {
+            if (typeof data != 'undefined' && data !== []) {
                 this.tvlist = data;
             } else {
                 this.tvlist = myinfo;
@@ -77,33 +77,59 @@ var app = new Vue({
 
                 axios.get(getapiurl(tv.id, tv.type+'_playlistitems', tv.page))
                     .then(function (response) {
-                        if (response.data.pageInfo.totalResults !== undefined) {
-                            response.data.items.forEach(function (i, index) {
-                                if (i.contentDetails.videoPublishedAt !== undefined) {
-                                    var item = {
-                                        videoId: i.contentDetails.videoId,
-                                        img: i.snippet.thumbnails.default.url,
-                                        title: i.snippet.title,
-                                        description: i.snippet.description,
-                                        publishtime: i.contentDetails.videoPublishedAt.substr(0,10)
-                                    };
-                                    tv.items.push(item);
+                        my.type = tv.type;
+                        if (tv.type == 'youtube') {
+                            if (typeof response.data.pageInfo.totalResults != 'undefined') {
+                                response.data.items.forEach(function (i, index) {
+                                    if (typeof i.contentDetails.videoPublishedAt != 'undefined') {
+                                        var item = {
+                                            videoId: i.contentDetails.videoId,
+                                            img: i.snippet.thumbnails.default.url,
+                                            title: i.snippet.title,
+                                            description: i.snippet.description,
+                                            publishtime: i.contentDetails.videoPublishedAt.substr(0,10)
+                                        };
+                                        tv.items.push(item);
+                                    }
+        	                    });
+                            
+                                if (typeof response.data.nextPageToken == 'string') {
+                                    tv.page = response.data.nextPageToken;
+                                } else {
+                                    tv.more = false;
                                 }
-        	                });
-                
-                            if (typeof response.data.nextPageToken == 'string') {
-                                tv.page = response.data.nextPageToken;
+                            
                             } else {
-                                tv.more = false;
+                                alert('無此 Youtube 播放列表');
                             }
-                
-                        } else {
-                            alert('無此 Youtube 播放列表');
+                        } else if (tv.type == 'bilibili') {
+                            if (typeof response.data.status == 'boolean') {
+                                if (response.data.data.vlist) {
+                                    response.data.data.vlist.forEach(function (i, index) {
+                                        var date = new Date(i.created*1000);
+                                        var publishtime = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+                                        var item = {
+                                            videoId: i.aid,
+                                            img: 'http:'+i.pic,
+                                            title: i.title,
+                                            description: i.description,
+                                            publishtime: publishtime
+                                        };
+                                        tv.items.push(item);
+        	                        });
+                                    tv.page = tv.page > 0 ? tv.page + 1 : 2;
+                                } else {
+                                    tv.more = false;
+                                }
+                            } else {
+                                alert('無此 bilibili 播放列表');
+                            }
                         }
+
                         app.onloading();
                     })
                     .catch(function (error) {
-                        alert(error);
+                        //console.log(error);
                         app.onloading();
                     });
             }
@@ -136,22 +162,34 @@ var app = new Vue({
                 	this.onloading();
                     axios.get(getapiurl(id, my.type+'_playlist', ''))
                         .then(function (response) {
-                            if (response.data.items[0].snippet.title !== undefined) {
-                                var item = app.getemptyitem();
-                                item.id = id;
-                                item.title = response.data.items[0].snippet.title;
-                                item.type = 'youtube';
-                                app.tvlist.push(item);
-                                app.save();
-                            } else {
-                                alert('無此 Youtube 播放列表');
+                            if (my.type == 'youtube') {
+                                if (typeof response.data.items[0].snippet.title != 'undefined') {
+                                    var item = app.getemptyitem();
+                                    item.id = id;
+                                    item.title = response.data.items[0].snippet.title;
+                                    item.type = 'youtube';
+                                    app.tvlist.push(item);
+                                    app.save();
+                                } else {
+                                    alert('無此 Youtube 播放列表');
+                                }
+                            } else if (my.type == 'bilibili') {
+                                if (typeof response.data.data == 'object') {
+                                    var item = app.getemptyitem();
+                                    item.id = id;
+                                    item.title = response.data.data.name;
+                                    item.type = 'bilibili';
+                                    app.tvlist.push(item);
+                                    app.save();
+                                } else {
+                                    alert('無此 bilibili 播放列表');
+                                }
                             }
                             app.newtv = '';
                             app.onloading();
                         })
                         .catch(function (error) {
                             //console.log(error);
-                            alert(error);
                             app.onloading();
                         });
                 } else {
@@ -207,7 +245,6 @@ var app = new Vue({
                 	data.push(empty);
                 });
                 store.set('data',data);
-                //alert('saved');
             } else {
                 alert('無法儲存');
             }
@@ -222,16 +259,14 @@ var my = {
 
 function parseid(url) {
     var id = '';
-    // bilibili http://space.bilibili.com/8739849/#!/video
     var urlArr = url.split("bilibili.com/");
     if (urlArr.length == 2) {
-        var urlArr2 = urlArr[1].split("/");
+        var urlArr2 = urlArr[1].split("#!");
         if (urlArr.length > 0) {
-            id = urlArr2[0];
+            id = urlArr2[0].replace('/', '');
             my.type = 'bilibili';
         }
     } else {
-        // youtube https://www.youtube.com/playlist?list=PLKOpTKkFrTy_nX9SHIKMHXogoJnvf9cLi
         urlArr = url.split("playlist?list=");
         if (urlArr.length == 2) {
             id = urlArr[1];
@@ -242,37 +277,19 @@ function parseid(url) {
     return id;
 }
 
-function checkid(id) {
-    var name = '';
-    
-    // bilibili http://space.bilibili.com/ajax/member/GetInfo?csrf=&mid=8739849
-    var url = 'http://space.bilibili.com/ajax/member/GetInfo';
-    axios.post(url, {
-    csrf: '',
-    mid: id
-    })
-    .then(function (response) {
-        console.log(response);
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
-    
-    return name;
-}
-
 function getapiurl(id, type, page) {
     var url = '';
     var pagesize = 10;
-    if (type == 'bilibili') {
-//        http://space.bilibili.com/ajax/member/getSubmitVideos?mid=26666749&pagesize=30&tid=0&page=2&keyword=&order=pubdate
-
-        url = 'http://space.bilibili.com/ajax/member/getSubmitVideos?mid='+id+'&pagesize=30&tid=0&page='+page+'&keyword=&order=pubdate';
+    if (type == 'bilibili_playlist') {
+        url = './api/?id='+id+'&type=bilibili&c=info';
+    } else if (type == 'bilibili_playlistitems') {
+        if (page == '') {
+            page = 1;
+        }
+        url = './api/?id='+id+'&type=bilibili&c=items&page='+page;
     } else if (type == 'youtube_playlist') {
-//      https://www.googleapis.com/youtube/v3/playlists?part=snippet&id=PLKOpTKkFrTy_nX9SHIKMHXogoJnvf9cLi%2CPLyYlLs02rgBYRWBzYpoHz7m2SE8mEZ68w&key=AIzaSyAwJaN5lp7CeGIc02s8h77ygCPRESHUI6E
         url = 'https://www.googleapis.com/youtube/v3/playlists?part=snippet&id='+id+'&key='+ my.youtube_api_key;
     } else if (type == 'youtube_playlistitems') {
-//      https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails,snippet&playlistId=PLKOpTKkFrTy_nX9SHIKMHXogoJnvf9cLi&maxResults=10&key=AIzaSyAwJaN5lp7CeGIc02s8h77ygCPRESHUI6E
         url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails,snippet&playlistId='+id+'&maxResults='+pagesize+'&key='+ my.youtube_api_key;
         if (page != '') {
             url += '&pageToken=' + page;
@@ -281,6 +298,4 @@ function getapiurl(id, type, page) {
 
     return url;
 }
-
-
 

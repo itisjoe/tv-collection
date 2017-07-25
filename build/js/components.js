@@ -47,19 +47,30 @@ Vue.component('itemsbox',{
 
 Vue.component('tvitem', {
     props:['i'],
+    computed: {
+        url : function() {
+            var url = '#';
+            if (my.type == 'youtube') {
+                url = 'https://www.youtube.com/watch?v=' + this.i.videoId;
+            } else if (my.type == 'bilibili') {
+                url = 'http://www.bilibili.com/video/av'+this.i.videoId+'/';
+            }
+            return url;
+        }
+    },
     template: '\
     <article class="item">\
         <div class="thumb">\
-            <a :href="\'https://www.youtube.com/watch?v=\' + i.videoId" target="_blank">\
+            <a :href="url" target="_blank">\
                 <img :src="i.img" :title="i.title" :alt="i.title">\
             </a>\
         </div>\
         <div class="info">\
             <div class="title">\
-                <a :href="\'https://www.youtube.com/watch?v=\' + i.videoId" target="_blank">{{i.title}}</a>\
+                <a :href="url" target="_blank">{{i.title}}</a>\
             </div>\
             <div class="description">\
-                <a :href="\'https://www.youtube.com/watch?v=\' + i.videoId" target="_blank">{{i.description}}</a>\
+                <a :href="url" target="_blank">{{i.description}}</a>\
             </div>\
             <div class="publishtime">發佈時間：{{i.publishtime}}</div>\
         </div>\
