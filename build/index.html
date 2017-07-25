@@ -21,10 +21,8 @@
         <transition name="slide">
         <aside id="tvlist" v-if="showsidebar">
             <div id="new">
-                <form id="newtvform" action="#" method="post"></form>
-                    <input type="text" id="newtv" name="newtv" v-model="newtv" v-on:keyup.enter="newtvsubmit" placeholder="請填入網址">
-                    <input type="submit" id="newtvsubmit" @click="newtvsubmit" value="新增">
-                </form>
+                <input type="text" id="newtv" name="newtv" v-model="newtv" v-on:keyup.enter="newtvsubmit" placeholder="請填入網址">
+                <a href="#" id="newtvsubmit" @click="newtvsubmit"><i class="fa fa-plus-square-o fa-2x"></i></a>
             </div>
             <draggable v-model="tvlist" class="dragArea" :options="{group:'tv',handle:'.my-handle'}" @update="onSortUpdate">
                 <div class="tv" v-for="(element, index) in tvlist">
@@ -45,12 +43,12 @@
         <div id="fullbtn" @click="sidebarmove()" v-show="showsidebar"></div>
         <section id="showlist">
             <div id="home" class="itemsbox" v-show="showHome">
-                本站可儲存 Bilibili 及 Youtube 的播放列表，請在左上角輸入框填入播放列表網址並按下新增即可。
                 <ul>
+                    <li>本站可儲存 Bilibili 及 Youtube 的播放列表，請在左上角輸入框填入播放列表網址並按下新增即可。</li>
                     <li>Bilibili 以帳號為主，網址格式為：http://space.bilibili.com/26666749/#!/video</li>
                     <li>Youtube 以播放清單為主，網址格式為：https://www.youtube.com/playlist?list=PLKOpTKkFrTy_nX9SHIKMHXogoJnvf9cLi</li>
                     <li>本站使用瀏覽器本地儲存功能，如果瀏覽器的版本較舊，可能會無法支援。</li>
-                    <li>本站原始碼放置於 Github 。</li>
+                    <li>本站原始碼放置於 <a href="https://github.com/itisjoe/tv-collection">Github</a> 。</li>
                 </ul>
             </div>
             <itemsbox :data="element" v-for="element in tvlist" :key="element.id" @gettvitems="gettvitems" @editdisplay="editdisplay" @editsave="editsave"></itemsbox>
@@ -67,6 +65,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/store.js/1.3.20/store+json2.min.js"></script>
 <script src="./js/vue-simple-spinner.min.js"></script>
+<script src="./js/components.js"></script>
+<script src="./js/info.js"></script>
 <script src="./js/main.js"></script>
 </body>
 </html>

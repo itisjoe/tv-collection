@@ -37,6 +37,7 @@ header#mainheader h1 {
 }
 #main aside#tvlist {
   z-index: 600;
+  position: fixed;
   top: 48px;
   bottom: 0;
   background-color: #fff;
@@ -45,15 +46,20 @@ header#mainheader h1 {
   box-shadow: 0 0 10px 1px #333;
 }
 #main aside#tvlist #new {
-  padding: 1%;
+  padding: 5px 0 5px 5px;
+  height: 50px;
 }
 #main aside#tvlist #new #newtv {
-  width: 73%;
-  line-height: 48px;
+  width: 80%;
+  line-height: 36px;
 }
 #main aside#tvlist #new #newtvsubmit {
-  width: 23%;
-  line-height: 48px;
+  display: inline-block;
+  width: 15%;
+  vertical-align: middle;
+  height: 40px;
+  text-align: center;
+  color: #333;
 }
 #main aside#tvlist .tv {
   margin: 0px 10px;
@@ -109,13 +115,13 @@ header#mainheader h1 {
 }
 #main section#showlist {
   z-index: 500;
-  width: 100%;
-  height: 100%;
-  overflow: scroll;
-  -webkit-overflow-scrolling: touch;
-  position: fixed;
-  top: 48px;
-  left: 0;
+}
+#main section#showlist #home ul {
+  margin: 0;
+  padding: 0;
+}
+#main section#showlist #home a {
+  text-decoration: underline;
 }
 #main section#showlist .itemsbox {
   padding: 30px;
@@ -128,15 +134,14 @@ header#mainheader h1 {
 }
 #main section#showlist .itemsbox header .title {
   line-height: 28px;
-  width: 60%;
 }
 #main section#showlist .itemsbox header .update {
   line-height: 28px;
-  width: 15%;
+  cursor: pointer;
 }
 #main section#showlist .itemsbox header .cancel {
   line-height: 28px;
-  width: 15%;
+  cursor: pointer;
 }
 #main section#showlist .itemsbox .items .item {
   border-bottom: 1px solid #ddd;
@@ -196,10 +201,26 @@ header#mainheader h1 {
     color: #fff;
   }
   section#showlist {
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+    position: fixed;
+    top: 48px;
+    left: 0;
     margin-left: 25%;
   }
   section#showlist .itemsbox {
     margin-right: 25%;
+  }
+  section#showlist .itemsbox header .title {
+    width: 90%;
+  }
+  section#showlist .itemsbox header .update {
+    width: 4%;
+  }
+  section#showlist .itemsbox header .cancel {
+    width: 4%;
   }
   section#showlist .itemsbox .items .item .thumb img {
     max-width: 120px;
@@ -215,7 +236,6 @@ header#mainheader h1 {
   header#mainheader {
     text-align: center;
     line-height: 48px;
-    position: relative;
   }
   header#mainheader .navbtn {
     position: absolute;
@@ -236,6 +256,18 @@ header#mainheader h1 {
   aside#tvlist .tv .my-handle,
   aside#tvlist .tv .deletetv {
     color: #aaa;
+  }
+  section#showlist {
+    padding-top: 48px;
+  }
+  section#showlist .itemsbox header .title {
+    width: 80%;
+  }
+  section#showlist .itemsbox header .update {
+    width: 8%;
+  }
+  section#showlist .itemsbox header .cancel {
+    width: 8%;
   }
   section#showlist .itemsbox .items .item .thumb img {
     max-width: 100%;
