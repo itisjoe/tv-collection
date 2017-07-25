@@ -14,27 +14,27 @@
 <body>
 <div id="root">
     <header id="mainheader">
-        <a id="navbtn" class="navbtn" href="#" v-on:click="sidebarmove()"><i class="fa fa-navicon" aria-hidden="true"></i></a>
-        <h1><a href="#" @click="homedisplay">TV Collection</a> </h1>
+        <a id="navbtn" class="navbtn" href="#this" v-on:click="sidebarmove()"><i class="fa fa-navicon" aria-hidden="true"></i></a>
+        <h1><a href="#this" @click="homedisplay">TV Collection</a> </h1>
     </header>
     <div id="main">
         <transition name="slide">
         <aside id="tvlist" v-if="showsidebar">
             <div id="new">
                 <input type="text" id="newtv" name="newtv" v-model="newtv" v-on:keyup.enter="newtvsubmit" placeholder="請填入網址">
-                <a href="#" id="newtvsubmit" @click="newtvsubmit"><i class="fa fa-plus-square-o fa-2x"></i></a>
+                <a href="#this" id="newtvsubmit" @click="newtvsubmit"><i class="fa fa-plus-square-o fa-2x"></i></a>
             </div>
             <draggable v-model="tvlist" class="dragArea" :options="{group:'tv',handle:'.my-handle'}" @update="onSortUpdate">
                 <div class="tv" v-for="(element, index) in tvlist">
                     <i class="fa fa-reorder my-handle" aria-hidden="true"></i>
-                    <a href="#" @click="deletetv(element, index)"><i class="fa fa-trash-o deletetv" aria-hidden="true"></i></a>
-                    <a href="#" class="title" v-bind:id="element.id" v-on:click="tvlistdisplay(element, index)">
+                    <a href="#this" @click="deletetv(element, index)"><i class="fa fa-trash-o deletetv" aria-hidden="true"></i></a>
+                    <a href="#this" class="title" v-bind:id="element.id" v-on:click="tvlistdisplay(element, index)">
                         <i v-if="element.type == 'youtube'" class="fa fa-youtube" aria-hidden="true">&nbsp;{{element.title}}</i>
                         <i v-else="element.type == 'bilibili'" class="fa fa-tv" aria-hidden="true">&nbsp;{{element.title}}</i>
                     </a>
                     <div class="deletetvbox" v-show="element.deletetvdisplay">
-                        <a class="delete" href="#" @click="removetv(index)">確定刪除</a>&nbsp;&nbsp;
-                        <a class="cancel" href="#" @click="canceldeletetv">取消</a>
+                        <a class="delete" href="#this" @click="removetv(index)">確定刪除</a>&nbsp;&nbsp;
+                        <a class="cancel" href="#this" @click="canceldeletetv">取消</a>
                     </div>
                 </div>
             </draggable>
