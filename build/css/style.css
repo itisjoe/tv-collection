@@ -265,13 +265,13 @@ header#mainheader h1 {
     padding-top: 48px;
   }
   section#showlist .itemsbox header .title {
-    width: 80%;
+    width: 70%;
   }
   section#showlist .itemsbox header .update {
-    width: 8%;
+    width: 5%;
   }
   section#showlist .itemsbox header .cancel {
-    width: 8%;
+    width: 5%;
   }
   section#showlist .itemsbox .items .item .thumb img {
     max-width: 100%;
