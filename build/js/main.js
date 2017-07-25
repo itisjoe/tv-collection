@@ -107,7 +107,9 @@ var app = new Vue({
                                 if (response.data.data.vlist) {
                                     response.data.data.vlist.forEach(function (i, index) {
                                         var date = new Date(i.created*1000);
-                                        var publishtime = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+                                        var MM = (date.getMonth()<9 ? '0' : '')+(date.getMonth()+1);
+                                        var dd = (date.getDate()<10 ? '0' : '')+date.getDate();
+                                        var publishtime = date.getFullYear() + '-' + MM + '-' + dd;
                                         var item = {
                                             videoId: i.aid,
                                             img: 'http:'+i.pic,
