@@ -84,7 +84,7 @@ var app = new Vue({
                                     if (typeof i.contentDetails.videoPublishedAt != 'undefined') {
                                         var item = {
                                             videoId: i.contentDetails.videoId,
-                                            img: i.snippet.thumbnails.default.url,
+                                            img: i.snippet.thumbnails.medium.url,
                                             title: i.snippet.title,
                                             description: i.snippet.description,
                                             publishtime: i.contentDetails.videoPublishedAt.substr(0,10)

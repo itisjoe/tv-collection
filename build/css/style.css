@@ -147,9 +147,6 @@ header#mainheader h1 {
   border-bottom: 1px solid #ddd;
   margin: 20px 0;
 }
-#main section#showlist .itemsbox .items .item .thumb img {
-  max-height: 100px;
-}
 #main section#showlist .itemsbox .items .item .info .title {
   font-weight: bold;
 }
@@ -275,9 +272,6 @@ header#mainheader h1 {
   section#showlist .itemsbox .items .item .thumb {
     margin: 0 auto;
     text-align: center;
-  }
-  section#showlist .itemsbox .items .item .thumb img {
-    max-width: 100%;
   }
   section#showlist .itemsbox .items .item .info .title {
     font-size: 16px;
