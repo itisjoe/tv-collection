@@ -147,25 +147,11 @@ header#mainheader h1 {
   border-bottom: 1px solid #ddd;
   margin: 20px 0;
 }
-#main section#showlist .itemsbox .items .item .thumb {
-  float: left;
-  width: 15%;
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 #main section#showlist .itemsbox .items .item .thumb img {
   max-height: 100px;
 }
-#main section#showlist .itemsbox .items .item .info {
-  float: left;
-  width: 85%;
-  padding-left: 5px;
-}
 #main section#showlist .itemsbox .items .item .info .title {
   font-weight: bold;
-  overflow: hidden;
 }
 #main section#showlist .itemsbox .items .item .info .description {
   margin: 10px 0;
@@ -226,8 +212,21 @@ header#mainheader h1 {
   section#showlist .itemsbox header .cancel {
     width: 4%;
   }
+  section#showlist .itemsbox .items .item .thumb {
+    float: left;
+    width: 15%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   section#showlist .itemsbox .items .item .thumb img {
     max-width: 120px;
+  }
+  section#showlist .itemsbox .items .item .info {
+    float: left;
+    width: 85%;
+    padding-left: 5px;
   }
   section#showlist .itemsbox .items .item .info .title {
     font-size: 20px;
@@ -272,6 +271,10 @@ header#mainheader h1 {
   }
   section#showlist .itemsbox header .cancel {
     width: 5%;
+  }
+  section#showlist .itemsbox .items .item .thumb {
+    margin: 0 auto;
+    text-align: center;
   }
   section#showlist .itemsbox .items .item .thumb img {
     max-width: 100%;

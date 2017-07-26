@@ -189,26 +189,14 @@ header#mainheader {
                     margin: 20px 0;
                     
                     .thumb {
-                        float: left;
-                        width: 15%;
-                        height: 150px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        
                         img {
                             max-height: 100px;
                         }
                     }
                     
                     .info {
-                        float: left;
-                        width: 85%;
-                        padding-left: 5px;
-
                         .title {
                             font-weight: bold;
-                            overflow: hidden;
                         }
                         
                         .description {
@@ -301,12 +289,23 @@ header#mainheader {
                 .items {
                     .item {
                         .thumb {
+                            float: left;
+                            width: 15%;
+                            height: 150px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
                             img {
                                 max-width: 120px;
                             }
                         }
 
                         .info {
+                            float: left;
+                            width: 85%;
+                            padding-left: 5px;
+
                             .title {
                                 font-size: 20px;
                             }
@@ -380,6 +379,9 @@ header#mainheader {
                 .items {
                     .item {
                         .thumb {
+                            margin: 0 auto;
+                            text-align: center;
+                            
                             img {
                                 max-width: 100%;
                             }
