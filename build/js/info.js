@@ -120,6 +120,18 @@ var myinfo = [
         init:false
     },
     {
+        id: "12721927",
+        title: "S°ML字幕组",
+        type: "bilibili",
+        items:[],
+        page:'',
+        displayitemsbox: false,
+        more: true,
+        deletetvdisplay: false,
+        editdisplay: false,
+        init:false
+    },
+    {
         id: "PLq_o2rIpiltYGskEGzXCTiOOWjf8PBXXG",
         title: "麻辣天后傳",
         type: "youtube",
