@@ -144,6 +144,18 @@ var myinfo = [
         init:false
     },
     {
+        id: "35581334",
+        title: "猪肉熟了",
+        type: "bilibili",
+        items:[],
+        page:'',
+        displayitemsbox: false,
+        more: true,
+        deletetvdisplay: false,
+        editdisplay: false,
+        init:false
+    },
+    {
         id: "PLq_o2rIpiltYGskEGzXCTiOOWjf8PBXXG",
         title: "麻辣天后傳",
         type: "youtube",
