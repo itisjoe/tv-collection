@@ -263,8 +263,8 @@ function parseid(url) {
     var id = '';
     var urlArr = url.split("bilibili.com/");
     if (urlArr.length == 2) {
-        var urlArr2 = urlArr[1].split("#!");
-        if (urlArr.length > 0) {
+        var urlArr2 = urlArr[1].split("/");
+        if (urlArr2.length > 0) {
             id = urlArr2[0].replace('/', '');
             my.type = 'bilibili';
         }

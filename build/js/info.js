@@ -1,43 +1,31 @@
 var myinfo = [
     {
+        id: "PLzaSCUmBdCHoeRxOAeSdS9fbH7g0PIP5E",
+        title: "綜藝3國智",
+        type: "youtube",
+        items:[],
+        page:'',
+        displayitemsbox: false,
+        more: true,
+        deletetvdisplay: false,
+        editdisplay: false,
+        init:false
+    },
+    {
+        id: "PLHCwVsO5oxdOwDPP4hs3ECeXEjvsGeTrv",
+        title: "飢餓遊戲",
+        type: "youtube",
+        items:[],
+        page:'',
+        displayitemsbox: false,
+        more: true,
+        deletetvdisplay: false,
+        editdisplay: false,
+        init:false
+    },
+    {
         id: "PLKOpTKkFrTy_nX9SHIKMHXogoJnvf9cLi",
         title: "綜藝玩很大",
-        type: "youtube",
-        items:[],
-        page:'',
-        displayitemsbox: false,
-        more: true,
-        deletetvdisplay: false,
-        editdisplay: false,
-        init:false
-    },
-    {
-        id: "PLguD-VYfmQid2Zo6MFFx14udxaNM-7FmX",
-        title: "綜藝大熱門",
-        type: "youtube",
-        items:[],
-        page:'',
-        displayitemsbox: false,
-        more: true,
-        deletetvdisplay: false,
-        editdisplay: false,
-        init:false
-    },
-    {
-        id: "PLPgID1Rky7XlVeb9nKxG8QavX1sATnO9f",
-        title: "2017小明星大跟班",
-        type: "youtube",
-        items:[],
-        page:'',
-        displayitemsbox: false,
-        more: true,
-        deletetvdisplay: false,
-        editdisplay: false,
-        init:false
-    },
-    {
-        id: "PL6CZ0wN6D0M1vbQaXU7dCXYKWryOCLva-",
-        title: "瘋神無雙",
         type: "youtube",
         items:[],
         page:'',
@@ -74,6 +62,18 @@ var myinfo = [
     {
         id: "14016058",
         title: "Aloha字幕组",
+        type: "bilibili",
+        items:[],
+        page:'',
+        displayitemsbox: false,
+        more: true,
+        deletetvdisplay: false,
+        editdisplay: false,
+        init:false
+    },
+    {
+        id: "8853065",
+        title: "反正不是字幕组",
         type: "bilibili",
         items:[],
         page:'',
@@ -132,44 +132,8 @@ var myinfo = [
         init:false
     },
     {
-        id: "8853065",
-        title: "反正不是字幕组",
-        type: "bilibili",
-        items:[],
-        page:'',
-        displayitemsbox: false,
-        more: true,
-        deletetvdisplay: false,
-        editdisplay: false,
-        init:false
-    },
-    {
-        id: "PLq_o2rIpiltYGskEGzXCTiOOWjf8PBXXG",
-        title: "麻辣天后傳",
-        type: "youtube",
-        items:[],
-        page:'',
-        displayitemsbox: false,
-        more: true,
-        deletetvdisplay: false,
-        editdisplay: false,
-        init:false
-    },
-    {
-        id: "PLHCwVsO5oxdNP4HxeYbTgl5-2_z7QEkyh",
-        title: "名模星任務",
-        type: "youtube",
-        items:[],
-        page:'',
-        displayitemsbox: false,
-        more: true,
-        deletetvdisplay: false,
-        editdisplay: false,
-        init:false
-    },
-    {
-        id: "PLHCwVsO5oxdOwDPP4hs3ECeXEjvsGeTrv",
-        title: "飢餓遊戲",
+        id: "PLguD-VYfmQid2Zo6MFFx14udxaNM-7FmX",
+        title: "綜藝大熱門",
         type: "youtube",
         items:[],
         page:'',
@@ -192,8 +156,8 @@ var myinfo = [
         init:false
     },
     {
-        id: "PL6CZ0wN6D0M3OTPgi7H3-CAqPwYYs8PHl",
-        title: "2016瘋神無雙",
+        id: "PLq_o2rIpiltYGskEGzXCTiOOWjf8PBXXG",
+        title: "麻辣天后傳",
         type: "youtube",
         items:[],
         page:'',
@@ -203,7 +167,5 @@ var myinfo = [
         editdisplay: false,
         init:false
     },
-
-
 
 ];
