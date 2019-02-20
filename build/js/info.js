@@ -96,6 +96,18 @@ var myinfo = [
         init:false
     },
     {
+        id: "8665350",
+        title: "叔叔_4431",
+        type: "bilibili",
+        items:[],
+        page:'',
+        displayitemsbox: false,
+        more: true,
+        deletetvdisplay: false,
+        editdisplay: false,
+        init:false
+    },
+    {
         id: "26666749",
         title: "来一发就走字幕组",
         type: "bilibili",
