@@ -146,7 +146,7 @@ var myinfo = [
     {
         id: "PLguD-VYfmQid2Zo6MFFx14udxaNM-7FmX",
         title: "綜藝大熱門",
-        type: "bilibili",
+        type: "youtube",
         items:[],
         page:'',
         displayitemsbox: false,
