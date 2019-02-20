@@ -84,6 +84,18 @@ var myinfo = [
         init:false
     },
     {
+        id: "35581334",
+        title: "猪肉熟了",
+        type: "bilibili",
+        items:[],
+        page:'',
+        displayitemsbox: false,
+        more: true,
+        deletetvdisplay: false,
+        editdisplay: false,
+        init:false
+    },
+    {
         id: "26666749",
         title: "来一发就走字幕组",
         type: "bilibili",
@@ -134,7 +146,7 @@ var myinfo = [
     {
         id: "PLguD-VYfmQid2Zo6MFFx14udxaNM-7FmX",
         title: "綜藝大熱門",
-        type: "youtube",
+        type: "bilibili",
         items:[],
         page:'',
         displayitemsbox: false,
