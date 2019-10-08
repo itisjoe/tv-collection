@@ -2,7 +2,7 @@
 
 手動收集 Youtube 及 Bilibili 的播放列表。
 
-[這裡請 https://hsin.tw/tv](https://hsin.tw/tv)
+[這裡請 https://tvv.herokuapp.com](https://tvv.herokuapp.com)
 
 ### 使用工具及套件
 
